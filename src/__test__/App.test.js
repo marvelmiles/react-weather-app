@@ -9,8 +9,7 @@ jest.mock('axios');
 describe('Testing <App /> component', () => {
     it('Input is truthy',async ()=>{
         const app = render(<App />);
-    const reports = [{}];
-    const search = app.getByTestId('search');
+        const search = app.getByTestId('search');
         fireEvent.change(search,{
             target:{value:'lagos'}
         });
