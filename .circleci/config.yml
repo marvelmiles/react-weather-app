@@ -1,5 +1,7 @@
 ---
 version: 2.1
+orbs:
+  snyk: snyk/snyk@0.0.8
 jobs:
   build:
     docker:
@@ -24,3 +26,7 @@ jobs:
     
       - run: yarn test
       - run: yarn lint
+      - snyk/scan:
+          fail-on-issues: false
+          monitor-on-build: false
+          severity-threshold: high
