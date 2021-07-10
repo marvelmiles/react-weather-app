@@ -33,4 +33,3 @@ jobs:
           severity-threshold: high
           project: 'react-weather-app/main-app'
           protect: true
-          severity-threshold: high 
