@@ -43,4 +43,4 @@ jobs:
           path: /tmp/test-results
       - run:
           name: Deploy
-          command: curl -X POST -d {} ${NETLIFY_REACT_WEATHER_APP_HOOK}  
+          command: curl -X POST -d {} NETLIFY_REACT_WEATHER_APP_HOOK  
