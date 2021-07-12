@@ -26,6 +26,12 @@ jobs:
     
       - run: yarn test
       - run: yarn lint
+      - deploy:
+          name: Build
+          command: npm run build
+      - run:
+          name: Run e2e tests
+          command: npm run e2e:ci
       - snyk/scan:
           token-variable: SNYK_TOKEN
           fail-on-issues: false
