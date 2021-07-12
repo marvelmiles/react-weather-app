@@ -41,4 +41,4 @@ jobs:
       # e2e test result reporter
       - store_test_results:
           path: /tmp/test-results
-      - run: curl -X POST -d {} NETLIFY_REACT_WEATHER_APP_HOOK  
+      - run: curl -X POST -d {} https://api.netlify.com/build_hooks/60ecbb6259927323dafc2b71 
