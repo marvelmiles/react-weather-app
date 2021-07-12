@@ -23,7 +23,13 @@ jobs:
             - ~/.npm 
             - ~/.cache
           key: v1-dependencies-{{ checksum "package.json" }}
-    
+      - snyk/scan:
+          token-variable: SNYK_TOKEN
+          fail-on-issues: false
+          monitor-on-build: true
+          severity-threshold: high
+          project: 'react-weather-app/main-app'
+          protect: true
       - run: yarn test
       - run: yarn lint
       - deploy:
@@ -32,10 +38,6 @@ jobs:
       - run:
           name: Run e2e tests
           command: npm run e2e:ci
-      - snyk/scan:
-          token-variable: SNYK_TOKEN
-          fail-on-issues: false
-          monitor-on-build: true
-          severity-threshold: high
-          project: 'react-weather-app/main-app'
-          protect: true
+      # e2e test result reporter
+      - store_test_results:
+          path: /tmp/test-results
