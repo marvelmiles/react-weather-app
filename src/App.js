@@ -16,7 +16,7 @@ const App = ()=>{
     return (
         <>
         <div className="main-container">
-            <h1 className="title">The</h1>
+            <h1 className="title">The df</h1>
             <input 
             type="text"
             className="search"
