@@ -16,7 +16,7 @@ const App = ()=>{
     return (
         <>
         <div className="main-container">
-            <h1 className="title">The weather isfffe just to bad for me i pray you work</h1>
+            <h1 className="title">The weather</h1>
             <input 
             type="text"
             className="search"
