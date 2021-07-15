@@ -8,6 +8,8 @@ jobs:
   test:
     docker:
       - image: cimg/node:lts-browsers
+    parameters:
+      cache-version: v2
     steps:
       - checkout
       - browser-tools/install-browser-tools
