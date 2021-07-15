@@ -5,7 +5,7 @@ ignore:
   SNYK-JS-BROWSERSLIST-1090194:
     - react-scripts > react-dev-utils > browserslist:
         reason: None given
-        expires: '2021-08-09T11:13:14.546Z'
+        expires: '2021-08-14T20:25:07.758Z'
   SNYK-JS-CSSWHAT-1298035:
     - react-scripts > @svgr/webpack > @svgr/plugin-svgo > svgo > css-select > css-what:
         reason: None given
@@ -13,11 +13,11 @@ ignore:
   SNYK-JS-EJS-1049328:
     - react-scripts > workbox-webpack-plugin > workbox-build > @surma/rollup-plugin-off-main-thread > ejs:
         reason: None given
-        expires: '2021-08-09T11:13:14.547Z'
+        expires: '2021-08-14T20:25:07.758Z'
   SNYK-JS-GLOBPARENT-1016905:
     - react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > glob-parent:
         reason: None given
-        expires: '2021-08-09T11:13:14.547Z'
+        expires: '2021-08-14T20:25:07.758Z'
   SNYK-JS-LODASHTEMPLATE-1088054:
     - react-scripts > workbox-webpack-plugin > workbox-build > lodash.template:
         reason: None given
