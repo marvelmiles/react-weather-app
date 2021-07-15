@@ -20,7 +20,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js --max-warnings 5",
     "serve:build": "serve -s build",
-    "e2e:ci": "testcafe chrome:headless e2e/*.js --app 'npm run serve:build' -r xunit:/tmp/test-results/res.xml "
+    "e2e:ci": "testcafe chrome:headless e2e/*.js --app 'npm run serve:build' -r xunit:/tmp/test-results/res.xml ",
+    "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -l --pretty=%B)\""
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "eslint": "^7.30.0",
+    "netlify-cli": "^4.4.2",
     "serve": "^12.0.0",
     "snyk": "^1.658.0",
     "testcafe": "^1.15.0",

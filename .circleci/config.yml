@@ -34,11 +34,12 @@ jobs:
       - run: yarn lint
       - deploy:
           name: Build
-          command: npm run build
+          command: yarn build
       - run:
           name: Run e2e tests
-          command: npm run e2e:ci
+          command: yarn e2e:ci
       # e2e test result reporter
       - store_test_results:
           path: /tmp/test-results
-      - run: curl -X POST -d {} https://api.netlify.com/build_hooks/60ecbb6259927323dafc2b71 
+      # - run: curl -X POST -d {} https://api.netlify.com/build_hooks/60ecbb6259927323dafc2b71 
+      - run: yarn netlify:deploy
