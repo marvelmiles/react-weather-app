@@ -5,11 +5,12 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/node:12.9.1-browsers
+      - image: cimg/node:16.5.0
   
     working_directory: ~/repo
     steps:
       - checkout
+      - run: node --version
       
       - restore_cache:
           keys:
