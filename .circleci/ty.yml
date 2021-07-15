@@ -1,0 +1,48 @@
+---
+version: 2.1
+orbs:
+  snyk: snyk/snyk@0.1.0
+jobs:
+  build:
+    docker:
+      - image: cimg/node:16.5.0
+  
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: node --version
+      
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      
+      - run: yarn install --ignore-optional
+      - save_cache:
+          paths:
+            - node_modules
+            - ~/.npm 
+            - ~/.cache
+          key: v1-dependencies-{{ checksum "package.json" }}
+      
+      - snyk/scan:
+          token-variable: SNYK_TOKEN
+          fail-on-issues: false
+          monitor-on-build: true
+          severity-threshold: high
+          project: 'react-weather-app/main-app'
+          protect: true
+      
+      - run: yarn test
+      - run: yarn lint
+      - deploy:
+          name: Build
+          command: npm run build
+      - run:
+          name: Run e2e tests
+          command: npm run e2e:ci
+      # e2e test result reporter
+      - store_test_results:
+          path: /tmp/test-results
+      # - run: curl -X POST -d {} https://api.netlify.com/build_hooks/60ecbb6259927323dafc2b71 
+      - run: yarn netlify:deploy
