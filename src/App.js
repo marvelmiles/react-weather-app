@@ -17,7 +17,7 @@ const App = ()=>{
         <>
         <div className="main-container">
  
-            <h1 className="title">you work</h1>
+            <h1 className="title">you workefeq</h1>
             <input 
             type="text"
             className="search"
