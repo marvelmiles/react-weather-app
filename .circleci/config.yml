@@ -8,22 +8,21 @@ jobs:
   test:
     docker:
       - image: cimg/node:lts-browsers
-    parameters:
-      cache-version: v2
     steps:
       - checkout
       - browser-tools/install-browser-tools
       - node/install-packages:
-        pkg-manager: yarn
+          pkg-manager: yarn
       - restore_cache:
-          name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            # when lock file changes, use increasingly general patterns to restore cache
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
       - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock"}}
       - snyk/scan:
           token-variable: SNYK_TOKEN
           fail-on-issues: false
